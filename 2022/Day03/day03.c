@@ -23,6 +23,22 @@ int getCharValue(char character) {
     return (character - 'a') + 1;
 }
 
+char getCommonChar(const char *firstLine, const char *secondLine, const char *thirdLine) {
+    for (int i = 0; firstLine[i] != '\0'; i++) {
+        for (int j = 0; secondLine[j] != '\0'; j++) {
+            if (firstLine[i] == secondLine[j]) {
+                for (int k = 0; thirdLine[k] != '\0'; k++) {
+                    if(secondLine[j] == thirdLine[k]) {
+                        return thirdLine[k];
+                    }
+                }
+            }
+        }
+    }
+
+    return '\0';
+}
+
 void partOne() {
     FILE *pFile = fopen("input.txt", "r");
     char buffer[MAX_LENGTH];
@@ -85,7 +101,7 @@ void partTwo() {
             position = 0;
         }
 
-        char commonChar = strpbrk(strpbrk(firstLine, secondLine), thirdLine)[0];
+        char commonChar = getCommonChar(firstLine, secondLine, thirdLine);
         totalSum += getCharValue(commonChar);
     }
 

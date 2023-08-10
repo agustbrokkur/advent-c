@@ -7,7 +7,7 @@ FILES :=  day03.c
 OBJECTS := day03.o
 #DEPEND =: day01.h
 
-OUTPUT := solution03
+OUTPUT := solution
 
 all: $(OUTPUT)
 
